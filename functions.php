@@ -1,6 +1,12 @@
 <?php
 
 
+if (!file_exists(get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php')) {
+    return new WP_Error('class-wp-bootstrap-navwalker-missing', __('It appears the class-wp-bootstrap-navwalker.php file may be missing.', 'wp-bootstrap-navwalker'));
+} else {
+    require_once get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
+}
+
 if (!function_exists('sua_formatura_setup')) :
     /**
      * Sets up theme defaults and registers support for various WordPress features.
@@ -24,17 +30,65 @@ if (!function_exists('sua_formatura_setup')) :
          *
          * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
          */
-        add_theme_support('post-thumbnails');
-        set_post_thumbnail_size(1568, 9999);
+//        add_theme_support('post-thumbnails');
+
+
+        //Imagem Destacada
+
+        // Add Thumb Column
+        if (!function_exists('fb_AddThumbColumn') && function_exists('add_theme_support')) {
+            // for post and page
+            add_theme_support('post-thumbnails', array('post', 'page'));
+            set_post_thumbnail_size(1568, 9999);
+
+            function fb_AddThumbColumn($cols)
+            {
+                $cols['thumbnail'] = __('Thumbnail');
+                return $cols;
+            }
+
+            function fb_AddThumbValue($column_name, $post_id)
+            {
+                $width = (int)35;
+                $height = (int)35;
+                if ('thumbnail' == $column_name) {
+                    // thumbnail of WP 2.9
+                    $thumbnail_id = get_post_meta($post_id, '_thumbnail_id', true);
+                    // image from gallery
+                    $attachments = get_children(array('post_parent' => $post_id, 'post_type' => 'attachment', 'post_mime_type' => 'image'));
+                    if ($thumbnail_id)
+                        $thumb = wp_get_attachment_image($thumbnail_id, array($width, $height), true);
+                    elseif ($attachments) {
+                        foreach ($attachments as $attachment_id => $attachment) {
+                            $thumb = wp_get_attachment_image($attachment_id, array($width, $height), true);
+                        }
+                    }
+                    if (isset($thumb) && $thumb) {
+                        echo $thumb;
+                    } else {
+                        echo __('None');
+                    }
+                }
+            }
+
+            // for posts
+            add_filter('manage_posts_columns', 'fb_AddThumbColumn');
+            add_action('manage_posts_custom_column', 'fb_AddThumbValue', 10, 2);
+            // for pages
+            add_filter('manage_pages_columns', 'fb_AddThumbColumn');
+            add_action('manage_pages_custom_column', 'fb_AddThumbValue', 10, 2);
+        }
+
 
         // This theme uses wp_nav_menu() in two locations.
         register_nav_menus(
             array(
-                'menu-1' => __('Primary', 'twentynineteen'),
-                'footer' => __('Footer Menu', 'twentynineteen'),
-                'social' => __('Social Links Menu', 'twentynineteen'),
+                'menu' => 'Menu Principal',
+                'menu_top_right' => 'Menu Topo Direita',
+                'footer' => 'Rodapé',
             )
         );
+
 
         /*
          * Switch default core markup for search form, comment form, and comments
@@ -115,3 +169,85 @@ function sua_formatura_scripts()
 }
 
 add_action('wp_enqueue_scripts', 'sua_formatura_scripts');
+
+function the_logo_site($class_logo = '', $class_link = '')
+{
+    if (has_custom_logo()) {
+        $logo = sprintf('<img src="%s" alt="%s" class="img-fluid %s" >',
+            esc_url(wp_get_attachment_image_url(get_theme_mod('custom_logo'), 'full')), get_bloginfo('name'), $class_logo);
+    } else {
+        $logo = '<h2>' . get_bloginfo('name') . '</h2>';
+    }
+    echo sprintf(' <a class="%s" href="%s" title="%s">%s</a>', $class_link, get_home_url(), get_bloginfo('name'), $logo);
+}
+
+//remove wp version
+function theme_remove_version()
+{
+    return '';
+}
+
+add_filter('the_generator', 'theme_remove_version');
+
+//remove default footer text
+function remove_footer_admin()
+{
+    echo "";
+}
+
+add_filter('admin_footer_text', 'remove_footer_admin');
+
+//remove wordpress logo from adminbar
+function wp_logo_admin_bar_remove()
+{
+    global $wp_admin_bar;
+    /* Remove their stuff */
+    $wp_admin_bar->remove_menu('wp-logo');
+}
+
+add_action('wp_before_admin_bar_render', 'wp_logo_admin_bar_remove', 0);
+
+
+// Remove default Dashboard widgets
+function disable_default_dashboard_widgets()
+{
+
+    //remove_meta_box('dashboard_right_now', 'dashboard', 'core');
+    remove_meta_box('dashboard_activity', 'dashboard', 'core');
+    remove_meta_box('dashboard_recent_comments', 'dashboard', 'core');
+    remove_meta_box('dashboard_incoming_links', 'dashboard', 'core');
+    remove_meta_box('dashboard_plugins', 'dashboard', 'core');
+
+    remove_meta_box('dashboard_quick_press', 'dashboard', 'core');
+    remove_meta_box('dashboard_recent_drafts', 'dashboard', 'core');
+    remove_meta_box('dashboard_primary', 'dashboard', 'core');
+    remove_meta_box('dashboard_secondary', 'dashboard', 'core');
+}
+
+add_action('admin_menu', 'disable_default_dashboard_widgets');
+
+remove_action('welcome_panel', 'wp_welcome_panel');
+
+/**
+ * Custom callback for outputting comments
+ *
+ * @return void
+ * @author Keir Whitaker
+ */
+function bootstrap_comment($comment, $args, $depth)
+{
+    $GLOBALS['comment'] = $comment;
+    ?>
+    <?php if ($comment->comment_approved == '1'): ?>
+    <li class="media">
+    <div class="media-left">
+        <?php echo get_avatar($comment); ?>
+    </div>
+    <div class="media-body">
+        <h4 class="media-heading"><?php comment_author_link() ?></h4>
+        <time><a href="#comment-<?php comment_ID() ?>" pubdate><?php comment_date() ?> at <?php comment_time() ?></a>
+        </time>
+        <?php comment_text() ?>
+    </div>
+<?php endif;
+}
