@@ -28,6 +28,9 @@ mix.scripts([
     'resources/assets/countdown/js/countdown.js',
 ], 'js/all.js');
 
+mix.copyDirectory('resources/assets/font-awesome', 'assets/font-awesome');
+mix.copyDirectory('resources/assets/iconmoon', 'assets/iconmoon');
+
 
 if(!mix.inProduction()){
     bs.init({

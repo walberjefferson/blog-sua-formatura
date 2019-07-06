@@ -144,27 +144,15 @@ function twentynineteen_widgets_init()
  */
 function sua_formatura_scripts()
 {
-//    wp_enqueue_style('sf-style', get_stylesheet_uri(), array(), wp_get_theme()->get('Version'));
     wp_enqueue_style('all', get_theme_file_uri('/css/all.css'), array(), '1.0');
-//    wp_enqueue_style('bootstrap', get_theme_file_uri('/assets/bootstrap/css/bootstrap.min.css'), array(), '1.0');
-//    wp_enqueue_style('select2', get_theme_file_uri('/assets/select2/css/select2.min.css'), array(), '1.0');
     wp_enqueue_style('font-awesome', get_theme_file_uri('/assets/font-awesome/css/font-awesome.min.css'), array(), '1.0');
     wp_enqueue_style('iconmoon', get_theme_file_uri('/assets/iconmoon/css/iconmoon.css'), array(), '1.0');
-//    wp_enqueue_style('owl_carousel', get_theme_file_uri('/assets/owl-carousel/css/owl.carousel.min.css'), array(), '1.0');
-//    wp_enqueue_style('magnific-popup', get_theme_file_uri('/assets/magnific-popup/css/magnific-popup.css'), array(), '1.0');
-//    wp_enqueue_style('animate', get_theme_file_uri('/css/animate.css'), array(), '1.0');
     wp_enqueue_style('app', get_theme_file_uri('/css/app.css'), array('all'), '1.0');
     wp_enqueue_style('custom', get_theme_file_uri('/css/custom.css'), array('app'), '1.0');
 
 
-    wp_enqueue_script('jquery', get_theme_file_uri('/js/jquery.min.js'), array(), '1.1', true);
+//    wp_enqueue_script('jquery', get_theme_file_uri('/js/jquery.min.js'), array(), '1.1', true);
     wp_enqueue_script('all', get_theme_file_uri('/js/all.js'), array('jquery'), '1.1', true);
-//    wp_enqueue_script('bootstrap', get_theme_file_uri('/assets/bootstrap/js/bootstrap.min.js'), array('jquery', 'popper'), '1.1', true);
-//    wp_enqueue_script('select2', get_theme_file_uri('/assets/select2/js/select2.min.js'), array('jquery'), '1.1', true);
-    wp_enqueue_script('bxslider', get_theme_file_uri('/assets/bxslider/js/bxslider.min.js'), array('jquery'), '1.1', true);
-    wp_enqueue_script('owl-carousel', get_theme_file_uri('/assets/owl-carousel/js/owl.carousel.min.js'), array('jquery'), '1.1', true);
-//    wp_enqueue_script('masonry', get_theme_file_uri('/assets/masonry/js/masonry.min.js'), array('jquery'), '1.1', true);
-    wp_enqueue_script('magnific-popup', get_theme_file_uri('/assets/magnific-popup/js/magnific-popup.min.js'), array('jquery'), '1.1', true);
     wp_enqueue_script('app', get_theme_file_uri('/js/app.js'), array('jquery'), '1.1', true);
 }
 
