@@ -199,7 +199,6 @@ add_action('wp_before_admin_bar_render', 'wp_logo_admin_bar_remove', 0);
 // Remove default Dashboard widgets
 function disable_default_dashboard_widgets()
 {
-
     //remove_meta_box('dashboard_right_now', 'dashboard', 'core');
     remove_meta_box('dashboard_activity', 'dashboard', 'core');
     remove_meta_box('dashboard_recent_comments', 'dashboard', 'core');
@@ -225,17 +224,14 @@ remove_action('welcome_panel', 'wp_welcome_panel');
 function bootstrap_comment($comment, $args, $depth)
 {
     $GLOBALS['comment'] = $comment;
-    ?>
-    <?php if ($comment->comment_approved == '1'): ?>
-    <li class="media">
-    <div class="media-left">
-        <?php echo get_avatar($comment); ?>
-    </div>
-    <div class="media-body">
-        <h4 class="media-heading"><?php comment_author_link() ?></h4>
-        <time><a href="#comment-<?php comment_ID() ?>" pubdate><?php comment_date() ?> at <?php comment_time() ?></a>
-        </time>
-        <?php comment_text() ?>
-    </div>
-<?php endif;
+
+    if ($comment->comment_approved == '1'):
+        $media_left = sprintf('<div class="media-left">%s</div>', get_avatar($comment, 32));
+        $time = sprintf('<time><a href="#comment-%s">%s às %s</a></time>', get_comment_ID(), get_comment_date(), get_comment_time());
+        $media_body = sprintf('<div class="media-body"><h4 class="media-heading">%s</h4>%s', get_comment_author(), $time);
+        echo sprintf('<li class="media">%s%s', $media_left, $media_body);
+        comment_text();
+        echo "</div></li>";
+    endif;
 }
+

@@ -10,7 +10,11 @@
                                  src="<?php the_post_thumbnail_url('thumbnail'); ?>"
                                  alt="<?php the_title(); ?>">
                         </a>
-                        <span class="post-meta">Categoria</span>
+                        <?php
+                        $categories = get_the_category($post_ID);
+                        if (isset($categories[0])) {
+                            echo "<span class='post-meta'>{$categories[0]->name}</span>";
+                        } ?>
                     </figure>
                 <?php endif; ?>
                 <h5 class="title">
@@ -34,3 +38,5 @@
     <?php endwhile; ?>
     <?php endif; ?>
 </ul>
+
+<?php get_template_part('template-parts/content/paginate', 'block') ?>
