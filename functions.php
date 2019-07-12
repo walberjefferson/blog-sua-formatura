@@ -1,5 +1,8 @@
 <?php
 
+if (file_exists(get_template_directory() . '/inc/wp-paginate.php')) {
+    require_once get_template_directory() . '/inc/wp-paginate.php';
+}
 
 if (!file_exists(get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php')) {
     return new WP_Error('class-wp-bootstrap-navwalker-missing', __('It appears the class-wp-bootstrap-navwalker.php file may be missing.', 'wp-bootstrap-navwalker'));
@@ -17,21 +20,7 @@ if (!function_exists('sua_formatura_setup')) :
      */
     function sua_formatura_setup()
     {
-        /*
-         * Let WordPress manage the document title.
-         * By adding theme support, we declare that this theme does not use a
-         * hard-coded <title> tag in the document head, and expect WordPress to
-         * provide it for us.
-         */
         add_theme_support('title-tag');
-
-        /*
-         * Enable support for Post Thumbnails on posts and pages.
-         *
-         * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-         */
-//        add_theme_support('post-thumbnails');
-
 
         //Imagem Destacada
 
@@ -84,16 +73,10 @@ if (!function_exists('sua_formatura_setup')) :
         register_nav_menus(
             array(
                 'menu' => 'Menu Principal',
-                'menu_top_right' => 'Menu Topo Direita',
-                'footer' => 'Rodapé',
+                'menu_top_right' => 'Menu Topo Direita'
             )
         );
 
-
-        /*
-         * Switch default core markup for search form, comment form, and comments
-         * to output valid HTML5.
-         */
         add_theme_support(
             'html5',
             array(
@@ -144,19 +127,36 @@ function twentynineteen_widgets_init()
  */
 function sua_formatura_scripts()
 {
-    wp_enqueue_style('all', get_theme_file_uri('/css/all.css'), array(), '1.0');
+    // CSS
+    wp_enqueue_style('all', get_theme_file_uri('/css/all.css'), array(), '1.1');
     wp_enqueue_style('font-awesome', get_theme_file_uri('/assets/font-awesome/css/font-awesome.min.css'), array(), '1.0');
     wp_enqueue_style('iconmoon', get_theme_file_uri('/assets/iconmoon/css/iconmoon.css'), array(), '1.0');
-    wp_enqueue_style('app', get_theme_file_uri('/css/app.css'), array('all'), '1.0');
-    wp_enqueue_style('custom', get_theme_file_uri('/css/custom.css'), array('app'), '1.0');
-
-
-//    wp_enqueue_script('jquery', get_theme_file_uri('/js/jquery.min.js'), array(), '1.1', true);
+    wp_enqueue_style('app', get_theme_file_uri('/css/app.css'), array('all'), '1.1');
+    wp_enqueue_style('custom', get_theme_file_uri('/css/custom.css'), array('app'), '1.1');
+    // JS
     wp_enqueue_script('all', get_theme_file_uri('/js/all.js'), array('jquery'), '1.1', true);
     wp_enqueue_script('app', get_theme_file_uri('/js/app.js'), array('jquery'), '1.1', true);
 }
 
 add_action('wp_enqueue_scripts', 'sua_formatura_scripts');
+
+function my_post_queries($query)
+{
+    if (!is_admin() && $query->is_main_query()) {
+        if (is_home()) {
+            $query->set('posts_per_page', 3);
+        }
+
+        if (is_category()) {
+            $query->set('posts_per_page', 2);
+        }
+
+        if(is_search()){
+            $query->set('posts_per_page', 4);
+        }
+    }
+}
+add_action('pre_get_posts', 'my_post_queries');
 
 function the_logo_site($class_logo = '', $class_link = '')
 {

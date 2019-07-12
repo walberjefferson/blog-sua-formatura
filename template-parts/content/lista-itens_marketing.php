@@ -1,7 +1,7 @@
-<ul class="clearfix">
+<ul class="row marketing-list">
     <?php if (have_posts()): while (have_posts()) : the_post(); ?>
-        <li>
-            <div class="blog-item">
+        <li class="col-md-4">
+            <div class="inner">
                 <?php if (has_post_thumbnail()) : ?>
                     <figure class="blog-pic">
                         <!--Para imagens-->
@@ -17,27 +17,13 @@
                         } ?>
                     </figure>
                 <?php endif; ?>
-                <h5 class="title">
-                    <a href="<?php the_permalink(); ?>"
-                       title="<?php the_title(); ?>"><?php the_title(); ?></a>
-                </h5>
-                <div class="box">
-                    <ul class="blog-info">
-                        <li class="comment">
-                            <?php comments_popup_link('0 Comentário', '1 Comentário', '% Comentários'); ?>
-                        </li>
-                    </ul>
-                </div>
-                <?php the_excerpt(); ?>
+                <h3><?php the_title(); ?></h3>
+                <p><?php the_excerpt(); ?></p>
                 <a href="<?php the_permalink(); ?>" class="know-more">Ver Mais</a>
             </div>
         </li>
     <?php endwhile; ?>
-    <?php endif;
-    wp_reset_postdata();
-    wp_reset_query(); ?>
+    <?php endif; ?>
 </ul>
 
-<?php if (function_exists('wp_paginate')) wp_paginate(); ?>
-
-<?php // get_template_part('template-parts/content/paginate', 'block') ?>
+<?php // if (function_exists('wp_paginate')) wp_paginate(); ?>
