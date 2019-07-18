@@ -6,10 +6,7 @@
 <section class="inner-banner">
     <div class="container">
         <div class="contents">
-            <h1>Blog</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                <span>Lorem Ipsum has been the industry's standard dummy text ever since</span>
-            </p>
+            <h1><?php bloginfo('title') ?></h1>
         </div>
     </div>
 </section>
@@ -29,11 +26,11 @@
                                 <img class="img-fluid" src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php the_title(); ?>">
                             </figure>
                         <?php endif; ?>
-                        <p class="time">
-                            <span class="dia"><?php the_time('j'); ?></span> de <span
-                                    class="mes"><?php the_time('F'); ?></span> de
-                            <span class="ano"><?php the_time('Y'); ?></span>
-                        </p>
+<!--                        <p class="time">-->
+<!--                            <span class="dia">--><?php //the_time('j'); ?><!--</span> de <span-->
+<!--                                    class="mes">--><?php //the_time('F'); ?><!--</span> de-->
+<!--                            <span class="ano">--><?php //the_time('Y'); ?><!--</span>-->
+<!--                        </p>-->
                         <h5><?php the_title(); ?></h5>
                         <div class="box">
                             <ul class="blog-info">
@@ -42,16 +39,11 @@
                         </div>
 
                         <?php the_content(); ?>
-
-                        <?php // the_comment(); ?>
-                        <?php comments_template(); ?>
-
-
+                        <?php // comments_template(); ?>
                     </div>
                 <?php endwhile; ?>
                 <?php endif; ?>
             </div>
-
 
             <?php get_sidebar(); ?>
         </div>

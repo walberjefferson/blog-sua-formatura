@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-md-8 col-lg-9">
                 <div class="blog-content masonry-blog">
-                    <?php get_template_part('template-parts/content/lista', 'itens') ?>
+                    <?php get_template_part('template-parts/content/grid', 'itens') ?>
                 </div>
             </div>
 

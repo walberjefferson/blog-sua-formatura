@@ -21,18 +21,18 @@
     <div class="top">
         <div class="container">
             <div class="row">
-                <div class="col-md-3 d-flex">
-                    <div class="align-self-center">
+                <div class="col-md-3 d-flex justify-content-sm-center">
+                    <div class="align-self-center m-auto">
                         <?php the_logo_site(); ?>
                     </div>
                 </div>
-                <div class="col-md-6 d-flex justify-content-center">
-                    <div class="align-self-center">
+                <div class="col-md-6 d-flex justify-content-center mt-3 mt-md-0">
+                    <div class="align-self-center text-center">
                         Copyright &copy; <?= date("Y") ?> <?php bloginfo('name') ?>. Todos os Direitos Reservados.
                     </div>
                 </div>
-                <div class="col-md-3 d-flex justify-content-end">
-                    <div class="float-right align-self-center">
+                <div class="col-md-3 d-flex justify-content-md-end justify-content-center">
+                    <div class="float-md-right float-none align-self-center">
                         <ul class="connect-us">
                             <li>
                                 <a href="https://www.facebook.com/suaformaturaoficial" target="_blank">

@@ -1,18 +1,6 @@
 <?php get_header(); ?>
 
-<!-- ==============================================
-**Inner Banner**
-=================================================== -->
-<section class="inner-banner">
-    <div class="container">
-        <div class="contents">
-            <h1>Blog</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                <span>Lorem Ipsum has been the industry's standard dummy text ever since</span>
-            </p>
-        </div>
-    </div>
-</section>
+<?php get_template_part('template-parts/content/lista', 'carrosel') ?>
 
 <section class="advices-outer">
     <div class="container">
@@ -33,7 +21,7 @@
 <section class="blog-section pt-0">
     <div class="container">
         <div class="blog-content masonry-blog grid">
-            <?php get_template_part('template-parts/content/lista', 'itens') ?>
+            <?php get_template_part('template-parts/content/grid', 'itens') ?>
         </div>
     </div>
 </section>

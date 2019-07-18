@@ -579,22 +579,13 @@
         if ($element.length > 0) {
             $element.owlCarousel({
                 loop: true,
-                margin: 30,
+                margin: 0,
                 navText: ['', ''],
                 nav: true,
                 autoplay: true,
                 smartSpeed: 1000,
                 autoplayHoverPause: true,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-
-                    768: {
-                        items: 2,
-                        margin: 20
-                    },
-                }
+                items: 1,
             });
         }
 

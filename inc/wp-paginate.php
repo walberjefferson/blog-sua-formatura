@@ -100,10 +100,10 @@ if (!class_exists('WPPaginate')) {
             add_action('wp_enqueue_scripts', array($this, 'wpp_enqueue_custom_css'), 20);
 
 
-            add_action('admin_notices', array($this, 'show_wpp_admin_notice'));
+            //add_action('admin_notices', array($this, 'show_wpp_admin_notice'));
 
-            add_action('wp_ajax_nopriv_wpp_dismiss_notice', array($this, 'wpp_dismiss_notice'));
-            add_action('wp_ajax_wpp_dismiss_notice', array($this, 'wpp_dismiss_notice'));
+            //add_action('wp_ajax_nopriv_wpp_dismiss_notice', array($this, 'wpp_dismiss_notice'));
+            //add_action('wp_ajax_wpp_dismiss_notice', array($this, 'wpp_dismiss_notice'));
 
             add_action('wp_ajax_nopriv_wpp_set_review_later', array($this, 'wpp_set_review_later'));
             add_action('wp_ajax_wpp_set_review_later', array($this, 'wpp_set_review_later'));
@@ -849,66 +849,6 @@ if (!class_exists('WPPaginate')) {
                     } ?>
             </style>
         <?php }
-
-        public function show_wpp_admin_notice()
-        {
-            $current_user_id = get_current_user_id();
-
-            $review = get_user_meta($current_user_id, WPP_REVIEW_NOTICE, true);
-            if ($review !== 'off') {
-                if ($review === false) {
-                    $this->wpp_show_review_notice();
-                } else {
-                    $now = date("Y-m-d");
-                    $review_time = strtotime($review);
-                    $now_time = strtotime($now);
-                    if ($now_time > $review_time) {
-                        $this->wpp_show_review_notice();
-                    }
-                }
-            }
-        }
-
-        public function wpp_show_review_notice()
-        {
-            if (current_user_can('manage_options')) { ?>
-                <div class="updated notice wpp-notice">
-                    <div id='wp-paginate-logo'></div>
-                    <div id='wpp-notice-1'><p id='wpp-notice-title'><?php _e('Love WP-Paginate?', 'wp-paginate'); ?></p>
-                        <p><?php _e('Your rating is a big help! We really appreciate it!', 'wp-paginate'); ?></p>
-
-                        <ul id="wpp-review-notice-links">
-                            <li><span class="dashicons dashicons-smiley"></span><a
-                                        id="wpp-review-already"><?php _e("I've already left a review", 'wp-paginate'); ?></a>
-                            </li>
-                            <li><span class="dashicons dashicons-calendar-alt"></span><a
-                                        id="wpp-review-later"><?php _e("Maybe Later", 'wp-paginate'); ?></a></li>
-                            <li><span class="dashicons dashicons-external"></span><a id="wpp-write-review"
-                                                                                     target="_blank"
-                                                                                     href="https://wordpress.org/support/plugin/wp-paginate/reviews/?filter=5"><?php _e("Sure! I'd love to!", 'wp-paginate'); ?></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <a class="dashicons dashicons-dismiss close-wpp-notice" id="wpp-dismiss"></a>
-                </div>
-                <?php
-            }
-        }
-
-        public function wpp_dismiss_notice()
-        {
-
-            if (!wp_verify_nonce($_POST['nonce'], WP_PAGINATE_NONCE)) {
-                exit(__('missing nonce!', 'wp-paginate'));
-            }
-
-            $current_user_id = get_current_user_id();
-
-            update_user_meta($current_user_id, WPP_REVIEW_NOTICE, "off");
-
-            exit();
-
-        }
 
         public function wpp_set_review_later()
         {

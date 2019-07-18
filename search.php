@@ -32,7 +32,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-lg-9">
-                <div class="blog-content masonry-blog">
+                <div class="blog-content">
                     <?php get_template_part('template-parts/content/lista', 'itens') ?>
                 </div>
             </div>
