@@ -499,7 +499,7 @@ opacity:0.5;
 -----------------------*/
 .header-wrapper .opt5 {
 	position: relative;
-	background: url(../demo/images/header-bg.jpg) no-repeat center top;
+	/*background: url(../demo/images/header-bg.jpg) no-repeat center top;*/
 }
 .opt5 {
 	width: 100%;
@@ -768,19 +768,23 @@ opacity:0.5;
 	background: none;
 	border: none;
 	margin-bottom: 0px;
+	box-sizing: border-box;
 }
 .navbar-light .navbar-nav {
-	padding-left: 5%;
+	padding-left: 2%;
 }
 .navbar-light .navbar-nav > li {
 	text-transform: uppercase;
+	box-sizing: border-box;
+	white-space: nowrap;
 }
 .navbar-expand-lg .navbar-nav .nav-link {
-	padding: 30px 20px;
+	padding: 30px 15px;
 	font-size: 16px;
 	font-weight: 500;
 	color: #556665;
 	cursor: pointer;
+	white-space: nowrap;
 }
 .navbar-light .navbar-nav .nav-link:focus,
 .navbar-light .navbar-nav .nav-link:hover {
@@ -793,7 +797,7 @@ opacity:0.5;
 	background: none;
 }
 .opt5 .dropdown-menu {
-	padding-top: 0px;
+	padding-top: 0;
 }
 .opt5.fixed .dropdown-menu {
 	padding-top: 15px;
@@ -1011,7 +1015,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3edc93', end
 	Banner Opt2
 -----------------------*/
 .banner.banner2 {
-	background: url(../demo/images/banner-bg2.jpg) no-repeat center top / cover;
+	/*background: url(../demo/images/banner-bg2.jpg) no-repeat center top / cover;*/
 	position: relative;
 }
 .banner.banner2:after {
@@ -1123,7 +1127,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3edc93', end
 	position: relative;
 }
 .banner.slide2 {
-	background: url(../demo/images/banner-bg2.jpg) no-repeat center top / cover;
+	/*background: url(../demo/images/banner-bg2.jpg) no-repeat center top / cover;*/
 	position: relative;
 }
 .banner.slide2:after {
@@ -1147,7 +1151,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3edc93', end
 	border-color: #b7c5c7;
 }
 .banner.slide3 {
-	background: url(../demo/images/banner-bg3.jpg) no-repeat center top / cover;
+	/*background: url(../demo/images/banner-bg3.jpg) no-repeat center top / cover;*/
 	position: relative;
 }
 .banner.slide3:after {
@@ -1242,7 +1246,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3edc93', end
 -----------------------*/
 .banner.slide3.banner5 {
 	padding-top: 86px;
-	background: url(../demo/images/banner-bg4.jpg) no-repeat center top / cover;
+	/*background: url(../demo/images/banner-bg4.jpg) no-repeat center top / cover;*/
 }
 /* ================================================== */
 /* 05. home Sections */
@@ -2241,7 +2245,7 @@ ul.speak-listing.opt4 li .client-detail {
 	position: absolute;
 	right: -30px;
 	top: 5px;
-	content: url(../demo/images/dots.png);
+	/*content: url(../demo/images/dots.png);*/
 }
 .signup-outer ul li:last-child:after {
 	display: none;
@@ -2347,7 +2351,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#53b0d7', end
 	   Sign Up op3
 -----------------------*/
 .signup-outer.img-bg {
-	background: url(../demo/images/signup-bg.jpg) no-repeat center top / cover;
+	/*background: url(../demo/images/signup-bg.jpg) no-repeat center top / cover;*/
 }
 .signup-outer.img-bg:after {
 	width: 100%;
@@ -2394,7 +2398,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#53b0d7', end
 ------------------------------------*/
 .demo-wrapper {
 	padding: 130px 0;
-	background: #fbfbfb url(../demo/images/landing-CTA-top.png) no-repeat bottom center;
+	/*background: #fbfbfb url(../demo/images/landing-CTA-top.png) no-repeat bottom center;*/
 	background-size: 100%;
 }
 .demo-wrapper.white-bg {
@@ -3017,7 +3021,7 @@ ul.counter-listing li .sub-title {
 -----------------------*/
 .about-video {
 	height: 560px;
-	background: url(../demo/images/about-video-bg.jpg) no-repeat center top / cover;
+	/*background: url(../demo/images/about-video-bg.jpg) no-repeat center top / cover;*/
 	position: relative;
 	text-align: center;
 }
@@ -3417,7 +3421,7 @@ ul.more-features-list li p {
 	position: relative;
 }
 .need-to-discuss.bg-img {
-	background: url(../demo/images/need-discuss-bg.jpg) no-repeat center top / cover;
+	/*background: url(../demo/images/need-discuss-bg.jpg) no-repeat center top / cover;*/
 }
 .need-to-discuss.bg-img:after {
 	width: 100%;
@@ -3670,7 +3674,7 @@ ul.portfolio-filter li.active a {
 	margin-bottom: 30px;
 }
 .portfolio-outer ul.portfolio li .inner {
-	background: #2a3f44;
+	background: transparent;
 	position: relative;
 	border: 3px #fff solid;
 }
@@ -3681,10 +3685,11 @@ ul.portfolio-filter li.active a {
 	width: 100%;
 }
 .portfolio-outer ul.portfolio li:hover figure {
-	opacity: 0.2;
+	/*opacity: 0.2;*/
 }
 .portfolio-outer ul.portfolio li:hover .inner {
-	border-color: #f29a32;
+	/*border-color: #f29a32;*/
+	/*border-radius: 15px !important;*/
 }
 .portfolio-outer ul.portfolio li .overlay {
 	width: 100%;
@@ -3693,13 +3698,13 @@ ul.portfolio-filter li.active a {
 	transform: translateY(-50%);
 	z-index: 1;
 	text-align: center;
-	opacity: 0;
-	transition: all 0.3s ease 0s;
-	left: 0px;
+	/*opacity: 1;*/
+	/*transition: all 0.3s ease 0s;*/
+	left: 0;
 }
-.portfolio-outer ul.portfolio li:hover .overlay {
-	opacity: 1;
-}
+/*.portfolio-outer ul.portfolio li:hover .overlay {*/
+/*	opacity: 1;*/
+/*}*/
 .portfolio-outer ul.portfolio li h2 {
 	display: block;
 	font-size: 22px;
@@ -3754,7 +3759,7 @@ ul.portfolio-filter li.active a {
 	height: 38px;
 	display: block;
 	content: "";
-	background: url(../demo/images/popup-arrows.png) no-repeat center bottom;
+	/*background: url(../demo/images/popup-arrows.png) no-repeat center bottom;*/
 }
 .mfp-arrow-left:before {
 	background-position: left top;
@@ -3867,7 +3872,7 @@ ul.portfolio-filter li.active a {
 	border-left: 1px solid #e9ecef;
 }
 .plan-table-holder .table tbody tr:first-child {
-	background: url(../demo/images/table-row-bg.png) repeat-x top;
+	/*background: url(../demo/images/table-row-bg.png) repeat-x top;*/
 }
 .plan-table-holder .table tbody tr td {
 	width: 25%;
@@ -4799,7 +4804,7 @@ ul.contact-list li .inner a.live-chat.support:hover {
 /* ================================================== */
 .career-banner.inner-banner {
 	min-height: 400px;
-	background: url(../demo/images/banner-career.jpg) no-repeat center top;
+	/*background: url(../demo/images/banner-career.jpg) no-repeat center top;*/
 }
 .career-banner .get-started {
 	max-width: 230px;
@@ -5362,7 +5367,7 @@ ul.our-values li .text-area p {
 }
 .call-action-bar.bg {
 	padding: 65px 0;
-	background: url(../demo/images/call-action-bg.jpg) no-repeat center center;
+	/*background: url(../demo/images/call-action-bg.jpg) no-repeat center center;*/
 	background-size: cover;
 	position: relative;
 }
@@ -5807,7 +5812,7 @@ ul.our-values li .text-area p {
 	padding: 40px 20px;
 	display: table;
 	position: absolute;
-	background: url(../demo/images/login-pg-bg.jpg) no-repeat fixed;
+	/*background: url(../demo/images/login-pg-bg.jpg) no-repeat fixed;*/
 	background-size: cover;
 }
 .login-outer:after {
@@ -6073,7 +6078,7 @@ ul.our-values li .text-area p {
 }
 .quate-box li {
 	width: 100%;
-	background: url(../demo/images/dotted-border.png) top repeat-x, url(../demo/images/dotted-border.png) bottom repeat-x, url(../demo/images/dotted-border-vertical.png) left repeat-y, url(../demo/images/dotted-border-vertical.png) right repeat-y;
+	/*background: url(../demo/images/dotted-border.png) top repeat-x, url(../demo/images/dotted-border.png) bottom repeat-x, url(../demo/images/dotted-border-vertical.png) left repeat-y, url(../demo/images/dotted-border-vertical.png) right repeat-y;*/
 	position: relative;
 	display: block;
 	padding: 27px 45px 28px;
@@ -6439,7 +6444,7 @@ button.close {
 	 Countdown
 ------------------------------------*/
 .countdown-wrapper.bg {
-	background: url(../demo/images/inner-countdown.jpg) no-repeat center;
+	/*background: url(../demo/images/inner-countdown.jpg) no-repeat center;*/
 	background-size: cover;
 	padding: 50px 0;
 }
@@ -6538,7 +6543,7 @@ button.close {
 	height: 100%;
 	position: absolute;
 	display: table;
-	background: url(../demo/images/comingsoon.jpg) no-repeat center fixed;
+	/*background: url(../demo/images/comingsoon.jpg) no-repeat center fixed;*/
 	background-size: cover;
 }
 .comingsoon:after {
@@ -7440,7 +7445,7 @@ ul.Product-listing.right-sec li .bottom .add-cart{
     height: 18px; 
     display: block; 
     content: ' '; 
-    background: url(../demo/images/radio-button.png) no-repeat center top / 100%; 
+    /*background: url(../demo/images/radio-button.png) no-repeat center top / 100%; */
     position: absolute; top: 0px; 
     left: 0px; 
     top: 50%; 

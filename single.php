@@ -7,9 +7,6 @@
     <div class="container">
         <div class="contents">
             <h1>Blog</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                <span>Lorem Ipsum has been the industry's standard dummy text ever since</span>
-            </p>
         </div>
     </div>
 </section>
@@ -29,9 +26,6 @@
                                 <img class="img-fluid" src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php the_title(); ?>">
                             </figure>
                         <?php endif; ?>
-<!--                        <figure class="blog-pic">-->
-<!--                            <img class="img-fluid" src="images/blog-details-pic-1.jpg" alt="">-->
-<!--                        </figure>-->
 
                         <p class="time">
                             <span class="dia"><?php the_time('j'); ?></span> de <span
@@ -58,7 +52,5 @@
         </div>
     </div>
 </section>
-
-<?php // get_template_part('template-parts/content/main', 'newsletter') ?>
 
 <?php get_footer(); ?>

@@ -39,5 +39,3 @@
 </ul>
 
 <?php if (function_exists('wp_paginate')) wp_paginate(); ?>
-
-<?php // get_template_part('template-parts/content/paginate', 'block') ?>

@@ -29,6 +29,4 @@
     </div>
 </section>
 
-<?php // get_template_part('template-parts/content/main', 'newsletter') ?>
-
 <?php get_footer(); ?>

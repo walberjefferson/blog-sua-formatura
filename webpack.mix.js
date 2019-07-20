@@ -21,6 +21,7 @@ mix.scripts([
     'resources/assets/select2/js/select2.min.js',
     'resources/assets/magnific-popup/js/magnific-popup.min.js',
     'resources/assets/masonry/js/masonry.min.js',
+    'resources/assets/isotope/js/isotope.min.js',
     'resources/assets/bxslider/js/bxslider.min.js',
     'resources/assets/owl-carousel/js/owl.carousel.min.js',
     'resources/assets/waypoints/js/waypoints.min.js',

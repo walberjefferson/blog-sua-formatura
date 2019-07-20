@@ -6,6 +6,10 @@ if (file_exists(get_template_directory() . '/inc/wp-paginate.php')) {
     require_once get_template_directory() . '/inc/wp-paginate.php';
 }
 
+if (file_exists(get_template_directory() . '/inc/custom-materiais.php')) {
+    require_once get_template_directory() . '/inc/custom-materiais.php';
+}
+
 if (!file_exists(get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php')) {
     return new WP_Error('class-wp-bootstrap-navwalker-missing', __('It appears the class-wp-bootstrap-navwalker.php file may be missing.', 'wp-bootstrap-navwalker'));
 } else {
@@ -29,7 +33,7 @@ if (!function_exists('sua_formatura_setup')) :
         // Add Thumb Column
         if (!function_exists('fb_AddThumbColumn') && function_exists('add_theme_support')) {
             // for post and page
-            add_theme_support('post-thumbnails', array('post', 'page'));
+            add_theme_support('post-thumbnails');
             set_post_thumbnail_size(1568, 9999);
 
             function fb_AddThumbColumn($cols)
@@ -130,14 +134,14 @@ function twentynineteen_widgets_init()
 function sua_formatura_scripts()
 {
     // CSS
-    wp_enqueue_style('all', get_theme_file_uri('/css/all.css'), array(), '1.3');
+    wp_enqueue_style('all', get_theme_file_uri('/css/all.css'), array(), '1.4');
     wp_enqueue_style('font-awesome', get_theme_file_uri('/assets/font-awesome/css/font-awesome.min.css'), array(), '1.0');
     wp_enqueue_style('iconmoon', get_theme_file_uri('/assets/iconmoon/css/iconmoon.css'), array(), '1.0');
-    wp_enqueue_style('app', get_theme_file_uri('/css/app.css'), array('all'), '1.3');
-    wp_enqueue_style('custom', get_theme_file_uri('/css/custom.css'), array('app'), '1.3');
+    wp_enqueue_style('app', get_theme_file_uri('/css/app.css'), array('all'), '1.6');
+    wp_enqueue_style('custom', get_theme_file_uri('/css/custom.css'), array('app'), '1.4');
     // JS
-    wp_enqueue_script('all', get_theme_file_uri('/js/all.js'), array('jquery'), '1.3', true);
-    wp_enqueue_script('app', get_theme_file_uri('/js/app.js'), array('jquery'), '1.3', true);
+    wp_enqueue_script('all', get_theme_file_uri('/js/all.js'), array('jquery'), '1.5', true);
+    wp_enqueue_script('app', get_theme_file_uri('/js/app.js'), array('jquery'), '1.5', true);
 }
 
 add_action('wp_enqueue_scripts', 'sua_formatura_scripts');
@@ -152,6 +156,10 @@ function my_post_queries($query)
 
         if (is_category()) {
             $query->set('posts_per_page', 2);
+        }
+
+        if (is_post_type_archive()) {
+            $query->set('posts_per_page', 9);
         }
 
         if (is_search()) {

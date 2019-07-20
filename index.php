@@ -26,12 +26,4 @@
     </div>
 </section>
 
-<!--<section class="content-marketing padding-lg">-->
-<!--    <div class="container">-->
-<!--        --><?php // get_template_part('template-parts/content/lista', 'itens_marketing') ?>
-<!--    </div>-->
-<!--</section>-->
-
-<?php // get_template_part('template-parts/content/main', 'newsletter') ?>
-
 <?php get_footer(); ?>
