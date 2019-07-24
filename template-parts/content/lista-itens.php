@@ -23,7 +23,7 @@
                              alt="<?php the_title(); ?>">
                     </a>
                     <?php
-                    $categories = get_the_category($post_ID);
+                    $categories = get_the_category($post->ID);
                     if (isset($categories[0])) {
                         echo "<span class='post-meta'>{$categories[0]->name}</span>";
                     } ?>

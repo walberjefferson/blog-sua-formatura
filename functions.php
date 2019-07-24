@@ -150,20 +150,24 @@ function my_post_queries($query)
 {
     if (!is_admin() && $query->is_main_query()) {
         if (is_home()) {
+            $qtd_home = (get_option('wj_qtd_home')) ? get_option('wj_qtd_home') : 3;
             $query->set('ignore_sticky_posts', true);
-            $query->set('posts_per_page', 3);
+            $query->set('posts_per_page', $qtd_home);
         }
 
         if (is_category()) {
-            $query->set('posts_per_page', 2);
+            $qtd_category = (get_option('wj_qtd_category')) ? get_option('wj_qtd_category') : 6;
+            $query->set('posts_per_page', $qtd_category);
         }
 
         if (is_post_type_archive()) {
-            $query->set('posts_per_page', 9);
+            $qtd_archive = (get_option('wj_qtd_materiais')) ? get_option('wj_qtd_materiais') : 9;
+            $query->set('posts_per_page', $qtd_archive);
         }
 
         if (is_search()) {
-            $query->set('posts_per_page', 4);
+            $qtd_busca = (get_option('wj_qtd_busca')) ? get_option('wj_qtd_busca') : 8;
+            $query->set('posts_per_page', $qtd_busca);
         }
     }
 }
@@ -278,7 +282,6 @@ function image_destaque($width = 100, $height = 100, array $attribute = null)
         $thumbnailSrc = $src[0];
         $attribute = attributes($attribute);
         $img = sprintf("<img src='%s?src=%s&w=%s&h=%s&zc=1&q=100' alt='%s' %s>", $timthumb, $thumbnailSrc, $width, $height, get_the_title($post->ID), $attribute);
-//        $img = '<img src="' . $timthumb . '?src=' . $thumbnailSrc . '&w=' . $width . '&h=' . $height . '&zc=1&q=100" alt="' . get_the_title($post->ID) . '" ' . $attribute . '>';
         return $img;
     else :
         return false;
@@ -295,3 +298,5 @@ function attributes($attribute)
     }
     return $attribute;
 }
+
+load_template(get_template_directory() . '/inc/config-options.php');

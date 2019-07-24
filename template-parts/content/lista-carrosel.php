@@ -1,8 +1,9 @@
 <?php
 $stickies = get_option('sticky_posts');
+$qtd_slide = (get_option('wj_qtd_slide')) ? get_option('wj_qtd_slide') : 2;
 $args = [
     'post__in' => $stickies,
-    'posts_per_page' => 2,
+    'posts_per_page' => $qtd_slide,
     'ignore_sticky_posts' => 1,
 ];
 $query_sticks = new WP_Query($args);
