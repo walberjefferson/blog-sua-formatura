@@ -12,7 +12,14 @@ $query_sticks = new WP_Query($args);
     <section class="components component-carousel">
         <ul class="owl-carousel">
             <?php while ($query_sticks->have_posts()) : $query_sticks->the_post(); ?>
-                <?php if (image_destaque()) : ?>
+                <?php if (image_destaque_field('imagem_slide')): ?>
+                    <li>
+                        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                            <?= image_destaque_field('imagem_slide', 1350, 460, ['class' => 'img-fluid d-none d-md-block']); ?>
+                            <?= image_destaque_field('imagem_slide', 800, 600, ['class' => 'img-fluid d-block d-md-none']); ?>
+                        </a>
+                    </li>
+                <?php elseif (image_destaque()) : ?>
                     <li>
                         <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
                             <?= image_destaque(1350, 460, ['class' => 'img-fluid d-none d-md-block']); ?>

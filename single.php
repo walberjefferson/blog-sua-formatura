@@ -20,7 +20,8 @@
             <div class="col-md-8 col-lg-9">
                 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
                     <div class="blog-content blog-detailed">
-                        <?php if (has_post_thumbnail()) : ?>
+                        <?php $ocultar = get_field('ocultar_imagem') ?>
+                        <?php if (has_post_thumbnail() && !$ocultar) : ?>
                             <figure class="blog-pic">
                                 <!--Para imagens-->
                                 <img class="img-fluid" src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php the_title(); ?>">

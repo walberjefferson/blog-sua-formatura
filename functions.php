@@ -288,6 +288,20 @@ function image_destaque($width = 100, $height = 100, array $attribute = null)
     endif;
 }
 
+function image_destaque_field($field, $width = 100, $height = 100, array $attribute = null)
+{
+    global $post;
+    global $timthumb;
+    $field = get_field($field, $post->ID);
+    if ($field) :
+        $attribute = attributes($attribute);
+        $img = sprintf("<img src='%s?src=%s&w=%s&h=%s&zc=1&q=100' alt='%s' %s>", $timthumb, $field, $width, $height, get_the_title($post->ID), $attribute);
+        return $img;
+    else :
+        return false;
+    endif;
+}
+
 function attributes($attribute)
 {
     if ($attribute !== null) {
