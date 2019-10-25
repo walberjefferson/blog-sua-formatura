@@ -3,24 +3,13 @@
 <!-- ==============================================
 **Inner Banner**
 =================================================== -->
-<?php if (have_posts()): while (have_posts()) : the_post(); ?>
-    <?php if (get_field('imagem_titulo')) : ?>
-        <section class="components component-carousel">
-            <?= _image_destaque_field('imagem_titulo', 'img_slide', ['class' => 'img-fluid d-none d-md-block']); ?>
-            <?= _image_destaque_field('imagem_titulo', 'img_slide_responsive', ['class' => 'img-fluid d-block d-md-none']); ?>
-            <?php // image_destaque_field('imagem_titulo', 1350, 350, ['class' => 'img-fluid w-100 d-none d-md-block']); ?>
-            <?php // image_destaque_field('imagem_titulo', 800, 400, ['class' => 'img-fluid w-100 d-block d-md-none']); ?>
-        </section>
-    <?php elseif (has_post_thumbnail()) : ?>
-        <section class="components component-carousel">
-            <?= _image_destaque('img_slide', ['class' => 'img-fluid d-none d-md-block']); ?>
-            <?= _image_destaque('img_titulo_responsive', ['class' => 'img-fluid d-block d-md-none']); ?>
-            <?php // image_destaque(1350, 350, ['class' => 'img-fluid w-100 d-none d-md-block']); ?>
-            <?php // image_destaque(800, 400, ['class' => 'img-fluid w-100 d-block d-md-none']); ?>
-        </section>
-    <?php endif; ?>
-<?php endwhile; ?>
-<?php endif; ?>
+<section class="inner-banner">
+    <div class="container">
+        <div class="contents">
+            <h1>Blog</h1>
+        </div>
+    </div>
+</section>
 
 <!-- ==============================================
 **Blog section**
@@ -40,6 +29,11 @@
                             </figure>
                         <?php endif; ?>
 
+<!--                        <p class="time">-->
+<!--                            <span class="dia">--><?php //the_time('j'); ?><!--</span> de <span-->
+<!--                                    class="mes">--><?php //the_time('F'); ?><!--</span> de-->
+<!--                            <span class="ano">--><?php //the_time('Y'); ?><!--</span>-->
+<!--                        </p>-->
                         <p class="text-center h6 text-uppercase">
                             <span class="badge badge-secondary p-2"><?= categoriaNome(); ?></span>
                         </p>

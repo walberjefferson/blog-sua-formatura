@@ -1,12 +1,5 @@
-/.idea
 /cache
 /demo
 /node_modules
 
 /*.zip
-
-/resources
-index2.php
-package*.json
-webpack.mix.js
-mix-manifest.json
