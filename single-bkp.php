@@ -16,29 +16,24 @@
 =================================================== -->
 <section class="blog-section">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-9">
+        <div class="row">
+            <div class="col-md-8 col-lg-9">
                 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
                     <div class="blog-content blog-detailed">
                         <?php $ocultar = get_field('ocultar_imagem') ?>
                         <?php if (has_post_thumbnail() && !$ocultar) : ?>
                             <figure class="blog-pic">
                                 <!--Para imagens-->
-                                <img class="img-fluid" src="<?php the_post_thumbnail_url('medium'); ?>"
-                                     alt="<?php the_title(); ?>">
+                                <img class="img-fluid" src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php the_title(); ?>">
                             </figure>
                         <?php endif; ?>
 
-<!--                        <p class="time">-->
-<!--                            <span class="dia">--><?php //the_time('j'); ?><!--</span> de <span-->
-<!--                                    class="mes">--><?php //the_time('F'); ?><!--</span> de-->
-<!--                            <span class="ano">--><?php //the_time('Y'); ?><!--</span>-->
-<!--                        </p>-->
-                        <p class="text-center h6 text-uppercase">
-                            <span class="badge badge-secondary p-2"><?= categoriaNome(); ?></span>
+                        <p class="time">
+                            <span class="dia"><?php the_time('j'); ?></span> de <span
+                                    class="mes"><?php the_time('F'); ?></span> de
+                            <span class="ano"><?php the_time('Y'); ?></span>
                         </p>
-                        <h5 class="text-center font-weight-bold"><?php the_title(); ?></h5>
-                        <p class="text-center">Escrito por: <strong><?php the_author(); ?></strong></p>
+                        <h5><?php the_title(); ?></h5>
                         <div class="box">
                             <ul class="blog-info">
                                 <li class="comment"><?php comments_popup_link('0 Comentário', '1 Comentário', '% Comentários'); ?></li>
@@ -47,18 +42,14 @@
 
                         <?php the_content(); ?>
 
-                        <div class="autor-artigo">
-                            <?php echo get_avatar(get_the_author_meta('ID'), 96, '', get_the_author_meta('display_name'), ['class' => 'mx-auto']); ?>
-                            <h6 class="mt-3 mb-2 font-weight-bold"><?php the_author_meta('display_name'); ?></h6>
-                            <p><?php the_author_meta('description'); ?></p>
-                        </div>
-
-
                         <?php comments_template(); ?>
                     </div>
                 <?php endwhile; ?>
                 <?php endif; ?>
             </div>
+
+            <?php get_sidebar(); ?>
+
         </div>
     </div>
 </section>

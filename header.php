@@ -19,7 +19,7 @@
 <!-- ==============================================
 **Header**
 =================================================== -->
-<header class="opt2">
+<header class="opt2 landing">
     <!-- Start Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">

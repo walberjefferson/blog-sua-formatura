@@ -41,9 +41,9 @@
         win.on('scroll',function() {
             var scroll = win.scrollTop();
             if (scroll >= 100) {
-                $("header.opt5").addClass("fixed");
+                $("header.opt5, header.opt2").addClass("fixed");
             } else {
-                $("header.opt5").removeClass("fixed");
+                $("header.opt5, header.opt2").removeClass("fixed");
             }
         });
 

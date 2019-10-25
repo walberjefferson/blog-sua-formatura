@@ -82,7 +82,7 @@ $comments_arg = array(
     'class_submit' => 'btn large border mt-4',
 ); ?>
 
-<section class="components form-sec padding-lg">
+<section class="components form-sec padding-md">
     <div class="container">
         <div class="form-area">
             <div class="contact-form-wrapper">
