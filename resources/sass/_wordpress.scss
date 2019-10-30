@@ -107,3 +107,40 @@ a img.aligncenter {
   z-index: 100000;
   /* Above WP toolbar. */
 }
+
+#comments{
+  h2{
+    margin-bottom: 15px;
+  }
+  .media-list{
+    .media{
+      &:first-child{
+        border-top: none;
+      }
+      margin-bottom: 15px;
+      border-top: 1px dashed lighten($cinza_titulo, 20%);
+      padding-top: 15px;
+      .media-left{
+        padding-right: 15px;
+        img{
+          border-radius: 50%;
+        }
+      }
+      .media-body{
+        p{
+          padding: 0;
+        }
+        .media-heading{
+          font-size: 20px;
+        }
+        time a{
+          color: #acacac;
+        }
+      }
+    }
+  }
+
+  .form-sec{
+    padding-top: 30px !important;
+  }
+}

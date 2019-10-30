@@ -3,13 +3,20 @@
 <!-- ==============================================
 **Inner Banner**
 =================================================== -->
-<section class="inner-banner">
-    <div class="container">
-        <div class="contents">
-            <h1>Blog</h1>
-        </div>
-    </div>
-</section>
+<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+    <?php if (get_field('imagem_titulo')) : ?>
+        <section class="components component-carousel">
+            <?= image_destaque_field('imagem_titulo', 1350, 350, ['class' => 'img-fluid d-none d-md-block']); ?>
+            <?= image_destaque_field('imagem_titulo', 800, 400, ['class' => 'img-fluid d-block d-md-none']); ?>
+        </section>
+    <?php elseif (has_post_thumbnail()) : ?>
+        <section class="components component-carousel">
+            <?= image_destaque(1350, 350, ['class' => 'img-fluid d-none d-md-block']); ?>
+            <?= image_destaque(800, 400, ['class' => 'img-fluid d-block d-md-none']); ?>
+        </section>
+    <?php endif; ?>
+<?php endwhile; ?>
+<?php endif; ?>
 
 <!-- ==============================================
 **Blog section**
@@ -29,11 +36,6 @@
                             </figure>
                         <?php endif; ?>
 
-<!--                        <p class="time">-->
-<!--                            <span class="dia">--><?php //the_time('j'); ?><!--</span> de <span-->
-<!--                                    class="mes">--><?php //the_time('F'); ?><!--</span> de-->
-<!--                            <span class="ano">--><?php //the_time('Y'); ?><!--</span>-->
-<!--                        </p>-->
                         <p class="text-center h6 text-uppercase">
                             <span class="badge badge-secondary p-2"><?= categoriaNome(); ?></span>
                         </p>
