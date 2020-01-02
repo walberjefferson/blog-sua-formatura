@@ -10484,6 +10484,12 @@ ul.Product-listing.right-sec li .bottom .add-cart{
 	border-bottom: 1px solid #d8dfe3;
 }
 
+/*@media (max-width: 800px) {*/
+/*	.autor-artigo{*/
+/*		padding: 50px 0px;*/
+/*	}*/
+/*}*/
+
 .autor-artigo img {
 	border-radius: 50%;
 }

@@ -107,6 +107,19 @@ if (!function_exists('sua_formatura_setup')) :
 endif;
 add_action('after_setup_theme', 'sua_formatura_setup');
 
+function sf_custom_images()
+{
+    add_image_size('img_slide', 1350, 360, ['center', 'center']);
+    add_image_size('img_slide_responsive', 800, 350, ['center', 'center']);
+    add_image_size('img_titulo_responsive', 800, 400, ['center', 'center']);
+//    add_image_size('img', 1000, 800, ['center', 'top']);
+    update_option('thumbnail_size_w', 360);
+    update_option('thumbnail_size_h', 182);
+    update_option('thumbnail_crop', 1);
+}
+
+add_action('after_setup_theme', 'sf_custom_images');
+
 
 function twentynineteen_widgets_init()
 {
@@ -137,8 +150,8 @@ function sua_formatura_scripts()
     wp_enqueue_style('all', get_theme_file_uri('/css/all.css'), array(), '1.6');
     wp_enqueue_style('font-awesome', get_theme_file_uri('/assets/font-awesome/css/font-awesome.min.css'), array(), '1.0');
     wp_enqueue_style('iconmoon', get_theme_file_uri('/assets/iconmoon/css/iconmoon.css'), array(), '1.0');
-    wp_enqueue_style('app', get_theme_file_uri('/css/app.css'), array('all'), '1.7');
-    wp_enqueue_style('custom', get_theme_file_uri('/css/custom.css'), array('app'), '1.6');
+    wp_enqueue_style('app', get_theme_file_uri('/css/app.css'), array('all'), '1.8');
+    wp_enqueue_style('custom', get_theme_file_uri('/css/custom.css'), array('app'), '1.8');
     // JS
     wp_enqueue_script('all', get_theme_file_uri('/js/all.js'), array('jquery'), '1.5', true);
     wp_enqueue_script('app', get_theme_file_uri('/js/app.js'), array('jquery'), '1.5', true);
@@ -273,6 +286,20 @@ function limita_conteudo($limite = 100)
     }
 }
 
+function _image_destaque($size = 'medium', array $attribute = null)
+{
+    global $post;
+    if (has_post_thumbnail()) :
+        $src = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), $size);
+        $thumbnailSrc = $src[0];
+        $attribute = attributes($attribute);
+        $img = sprintf("<img src='%s' alt='%s' %s>", $thumbnailSrc, get_the_title($post->ID), $attribute);
+        return $img;
+    else :
+        return false;
+    endif;
+}
+
 function image_destaque($width = 100, $height = 100, array $attribute = null)
 {
     global $post;
@@ -282,6 +309,19 @@ function image_destaque($width = 100, $height = 100, array $attribute = null)
         $thumbnailSrc = $src[0];
         $attribute = attributes($attribute);
         $img = sprintf("<img src='%s?src=%s&w=%s&h=%s&zc=1&q=100' alt='%s' %s>", $timthumb, $thumbnailSrc, $width, $height, get_the_title($post->ID), $attribute);
+        return $img;
+    else :
+        return false;
+    endif;
+}
+
+function _image_destaque_field($field, $size = 'medium', array $attribute = null)
+{
+    global $post;
+    $field = get_field($field, $post->ID);
+    if ($field) :
+        $attribute = attributes($attribute);
+        $img = sprintf("<img src='%s' alt='%s' %s>", $field['sizes'][$size], get_the_title($post->ID), $attribute);
         return $img;
     else :
         return false;
