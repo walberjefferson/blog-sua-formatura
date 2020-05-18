@@ -6,8 +6,8 @@
 <section class="inner-banner">
     <div class="container">
         <div class="contents">
-            <h1>Blog</h1>
-            <h2><?php single_cat_title(); ?></h2>
+            <h2>Blog</h2>
+            <h1><?php single_cat_title(); ?></h1>
         </div>
     </div>
 </section>

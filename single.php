@@ -43,7 +43,7 @@
                         <p class="text-center h6 text-uppercase">
                             <span class="badge badge-secondary p-2"><?= categoriaNome(); ?></span>
                         </p>
-                        <h5 class="text-center font-weight-bold"><?php the_title(); ?></h5>
+                        <h1 class="text-center font-weight-bold h3" style="color: #30373d;"><?php the_title(); ?></h1>
                         <p class="text-center">Escrito por: <strong><?php the_author(); ?></strong></p>
                         <div class="box">
                             <ul class="blog-info">

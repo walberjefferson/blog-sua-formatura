@@ -25,12 +25,7 @@
                                 <img class="img-fluid" src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php the_title(); ?>">
                             </figure>
                         <?php endif; ?>
-                        <h5><?php the_title(); ?></h5>
-<!--                        <div class="box">-->
-<!--                            <ul class="blog-info">-->
-<!--                                <li class="comment">--><?php //comments_popup_link('Nenhum Comentário', '1 Comentário', '% Comentários'); ?><!--</li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
+                        <h1><?php the_title(); ?></h1>
                         <?php the_content(); ?>
                     </div>
                 <?php endwhile; ?>
